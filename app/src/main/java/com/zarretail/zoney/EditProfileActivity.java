@@ -1,6 +1,7 @@
 package com.zarretail.zoney;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.InputType;
@@ -19,12 +20,20 @@ public class EditProfileActivity  extends Activity {
     private ListView mainListView;
     private ArrayList<Item> item_data;
     int nCount;
+
+    String strUserName;
+    String strUserEmail;
+
     //    public Item item_data[];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editiprofile);
         getActionBar().hide();
+
+        SharedPreferences settings = getSharedPreferences("mySetting",0);
+        strUserName = settings.getString("user_name","default");
+        strUserEmail = settings.getString("user_email","default@default.com");
 
         item_data = new ArrayList<Item>();
         Item sItem = new Item("");
@@ -54,7 +63,7 @@ public class EditProfileActivity  extends Activity {
 
         final TextView txtQestion = (TextView)findViewById(R.id.txtQuestion);
         final EditText eTxtAnswer = (EditText)findViewById(R.id.eTxAnswer);
-        eTxtAnswer.setText("jhgg");
+        eTxtAnswer.setText(strUserName);
         eTxtAnswer.setFocusable(true);
 
         Typeface myTypeface2 = Typeface.createFromAsset(getAssets(),"fonts/NexaRegular.otf");
@@ -80,7 +89,7 @@ public class EditProfileActivity  extends Activity {
                 Item sItem = new Item(strAns);
                 item_data.add(sItem);
                 listAdapter.notifyDataSetChanged();
-                eTxtAnswer.setText("hhhhhh@hhh.com");
+                eTxtAnswer.setText(strUserEmail);
                 nCount++;
                 txtQestion.setText(questions[nCount]);
                 if(nCount==2){

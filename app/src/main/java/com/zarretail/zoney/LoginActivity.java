@@ -3,6 +3,7 @@ package com.zarretail.zoney;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -32,6 +33,8 @@ public class LoginActivity extends Activity{
     private ArrayList<Item> item_data;
     int nCount;
     String strPassword;
+    String strUserEmail;
+    String strUserName;
 
     TextView txtQestion;
     EditText eTxtAnswer;
@@ -119,8 +122,8 @@ public class LoginActivity extends Activity{
     public void submitLogin(){
 
 
-        final String userEmail = item_data.get(1).title;
-        if (userEmail.length()==0){
+        strUserEmail = item_data.get(1).title;
+        if (strUserEmail.length()==0){
             Toast.makeText(getApplicationContext(),"Please input your email.",Toast.LENGTH_LONG).show();
             return;
         }
@@ -142,7 +145,7 @@ public class LoginActivity extends Activity{
             @Override
             protected JSONObject doInBackground(Void... params) {
                 UserFunctions userFunction = new UserFunctions();
-                JSONObject json = userFunction.loginUser(userEmail,userPassword,null);
+                JSONObject json = userFunction.loginUser(strUserEmail,userPassword,null);
                 // check for login response
                 if(json!=null){
                     return json;
@@ -177,6 +180,18 @@ public class LoginActivity extends Activity{
         }
 
         if (result!= null){
+            try {
+                strUserName = result.getString("name");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            SharedPreferences settings = getSharedPreferences("mySetting",0);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putString("user_email",strUserEmail);
+            editor.putString("user_name",strUserName);
+            editor.commit();
+
             Intent intent = new Intent(LoginActivity.this, MyProfileActivity.class);
             startActivity(intent);
             // close this activity

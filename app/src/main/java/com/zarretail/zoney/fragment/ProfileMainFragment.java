@@ -2,6 +2,7 @@ package com.zarretail.zoney.fragment;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,6 +24,12 @@ import com.zarretail.zoney.R;
 public class ProfileMainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        SharedPreferences settings = getActivity().getSharedPreferences("mySetting",0);
+        String strUserName = settings.getString("user_name","default");
+        String strUserEmail = settings.getString("user_email","default@default.com");
+
+
         View v = inflater.inflate(R.layout.activity_myprofile_main, container, false);
 
         Button btnAvatar = (Button)v.findViewById(R.id.btnProfileImage);
@@ -68,10 +75,12 @@ public class ProfileMainFragment extends Fragment {
         TextView txtUserName = (TextView)v.findViewById(R.id.txtUserName);
         myTypeface = Typeface.createFromAsset(getActivity().getAssets(),"fonts/choplinmedium.otf");
         txtUserName.setTypeface(myTypeface);
+        txtUserName.setText(strUserName);
 
         TextView txtUserEmail = (TextView)v.findViewById(R.id.txtUserEmail);
         myTypeface = Typeface.createFromAsset(getActivity().getAssets(),"fonts/NexaRegular.otf");
         txtUserEmail.setTypeface(myTypeface);
+        txtUserEmail.setText(strUserEmail);
 
         TextView txtMeetCount = (TextView)v.findViewById(R.id.txtMeetCount);
         TextView txtMeet1 = (TextView)v.findViewById(R.id.lblMeet1);

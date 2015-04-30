@@ -78,8 +78,8 @@ public class MySettingActivity extends Activity {
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(MySettingActivity.this, MyActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
-                finish();
             }
         });
 
