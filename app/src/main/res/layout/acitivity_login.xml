@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyActivity"
+    android:background="@drawable/login_back2">
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:id="@+id/navBack"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/nav_background2"/>
+
+    <Button
+        android:layout_width="58dp"
+        android:layout_height="41dp"
+        android:id="@+id/btnBack"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/btn_back"/>
+
+    <TextView
+        android:id="@+id/txtNavTitle"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_toRightOf="@id/btnBack"
+        android:text="Log In"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="left"
+        android:paddingLeft="20dp"
+        android:layout_marginTop="22dp"/>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_listView"
+        android:layout_marginTop="80dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/txtQuestion"
+        android:layout_width= "fill_parent"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:text="What is your email address?"
+        android:layout_below="@id/main_listView"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:gravity="center"/>
+    <EditText
+        android:id="@+id/eTxAnswer"
+        android:layout_width= "fill_parent"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:text=""
+        android:layout_below="@id/txtQuestion"
+        android:textColor="#000000"
+        android:singleLine="true"
+        android:textSize="20sp"
+        android:gravity="center"/>
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="75dp"
+        android:background="@drawable/btn_login_lg"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/btnLoginBt"/>
+
+</RelativeLayout>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#64abdc">
+    <ImageView
+        android:id="@+id/imgLogo1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/avatar1"/>
+    <TextView
+        android:id="@+id/txt1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:textSize="20sp"
+        android:layout_below="@id/imgLogo1"
+        android:textColor="#ffffff"
+        android:text="qwerty qwerty"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="2dp"
+        android:textSize="18sp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/imgLogo1"
+        android:text="March 26,2..."/>
+    <TextView
+        android:id="@+id/txt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:layout_below="@id/txt1"
+        android:text="Qp"/>
+    <ImageView
+        android:id="@+id/imgDivide1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/txt2"
+        android:src="@drawable/divider"/>
+
+    <ImageView
+        android:id="@+id/imgLogo2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/imgDivide1"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/avatar1"/>
+    <TextView
+        android:id="@+id/txt3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:textSize="20sp"
+        android:layout_below="@id/imgLogo2"
+        android:textColor="#ffffff"
+        android:text="qwerty qwerty"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="2dp"
+        android:textSize="18sp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/imgLogo2"
+        android:text="April03,2015"/>
+    <TextView
+        android:id="@+id/txt4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:layout_below="@id/txt3"
+        android:text="Empty conversation"/>
+    <ImageView
+        android:id="@+id/imgDivide2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/txt4"
+        android:src="@drawable/divider"/>
+</RelativeLayout>
