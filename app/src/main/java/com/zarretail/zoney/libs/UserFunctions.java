@@ -34,6 +34,7 @@ public class UserFunctions {
 
     private static String RegUserURL;
     private static String LoginUserURL;
+    private static String UpdatePssURL;
 
 	
 	// constructor
@@ -50,6 +51,8 @@ public class UserFunctions {
 
         RegUserURL = "https://zoney-staging.herokuapp.com/api/sign_up";
         LoginUserURL = "https://zoney-staging.herokuapp.com/api/sign_in";
+        UpdatePssURL = "ttps://zoney-staging.herokuapp.com/api/profile";
+
 	}
 
     /**
@@ -123,6 +126,70 @@ public class UserFunctions {
         return  json;
     }
 
+    public  JSONObject updateUserPwd(String authToken, String strCurPwd, String strNewPwd){
+        Log.e("updateUserPwd", "email:" + strNewPwd);
+
+//        String email = "asdff@a.com";
+//        String name = "name1";
+//        String password = "123456";
+
+        JSONObject jsonObj = new JSONObject();
+
+        try {
+            jsonObj.put("current_password", strCurPwd);
+            jsonObj.put("password", strNewPwd);
+        } catch (Exception e) {
+            Log.e("JSON ERROR Occurred!!!!", "Exception: " + e);
+        }
+
+
+
+        List<NameValuePair> params = new ArrayList<>();
+        params.add(new BasicNameValuePair("user", jsonObj.toString()));
+
+        JSONObject jsonRequest = new JSONObject();
+        try {
+            jsonRequest.put("user", jsonObj);
+            jsonRequest.put("auth_token",authToken);
+        } catch (JSONException e) {
+            Log.e("JSON ERROR Occurred!!!!", "Exception: " + e);
+        }
+
+        JSONObject json = jsonParser.getJSONFromUrlAndJSON(RegUserURL,jsonRequest);
+        return  json;
+    }
+
+    public  JSONObject updateUser(String authToken, String fullName, String email, String currentPwd){
+        Log.e("updateUser", "email:" + fullName);
+
+//        String email = "asdff@a.com";
+//        String name = "name1";
+//        String password = "123456";
+
+        JSONObject jsonObj = new JSONObject();
+
+        try {
+            jsonObj.put("name", fullName);
+            jsonObj.put("email", email);
+            jsonObj.put("current_password",currentPwd);
+        } catch (Exception e) {
+            Log.e("JSON ERROR Occurred!!!!", "Exception: " + e);
+        }
+
+        List<NameValuePair> params = new ArrayList<>();
+        params.add(new BasicNameValuePair("user", jsonObj.toString()));
+
+        JSONObject jsonRequest = new JSONObject();
+        try {
+            jsonRequest.put("user", jsonObj);
+            jsonRequest.put("auth_token",authToken);
+        } catch (JSONException e) {
+            Log.e("JSON ERROR Occurred!!!!", "Exception: " + e);
+        }
+
+        JSONObject json = jsonParser.getJSONFromUrlAndJSON(RegUserURL,jsonRequest);
+        return  json;
+    }
     /**
      * function make User Registration Request
      * */

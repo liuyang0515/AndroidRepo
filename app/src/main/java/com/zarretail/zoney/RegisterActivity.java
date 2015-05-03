@@ -150,7 +150,7 @@ public class RegisterActivity extends Activity {
                 if(result!=null) {
                     getResult(result);
                 }else{
-                    Toast.makeText(getApplicationContext(), "JSON error.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Can't create your user account.", Toast.LENGTH_LONG).show();
                 }
                 ringDialog.dismiss();
             }

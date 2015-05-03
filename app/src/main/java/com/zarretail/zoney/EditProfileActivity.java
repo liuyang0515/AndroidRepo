@@ -1,8 +1,11 @@
 package com.zarretail.zoney;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -10,6 +13,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.zarretail.zoney.libs.UserFunctions;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -23,6 +32,9 @@ public class EditProfileActivity  extends Activity {
 
     String strUserName;
     String strUserEmail;
+    String strPassword;
+    String strUserToken;
+    ProgressDialog ringDialog;
 
     //    public Item item_data[];
     @Override
@@ -34,6 +46,7 @@ public class EditProfileActivity  extends Activity {
         SharedPreferences settings = getSharedPreferences("mySetting",0);
         strUserName = settings.getString("user_name","default");
         strUserEmail = settings.getString("user_email","default@default.com");
+        strUserToken = settings.getString("user_token","");
 
         item_data = new ArrayList<Item>();
         Item sItem = new Item("");
@@ -82,7 +95,8 @@ public class EditProfileActivity  extends Activity {
                         eTxtAnswer.setVisibility(View.GONE);
                         nCount++;
                     }
-                    btnNext.setVisibility(View.GONE);
+//                    btnNext.setVisibility(View.GONE);
+                    submitUpdate();
                     return;
                 }
                 String strAns = eTxtAnswer.getText().toString();
@@ -97,5 +111,80 @@ public class EditProfileActivity  extends Activity {
                 }
             }
         });
+    }
+
+    public void submitUpdate(){
+
+        final String userName = item_data.get(1).title;
+        if (userName.length()==0){
+            Toast.makeText(getApplicationContext(), "Please input your name.", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        final String userEmail = item_data.get(2).title;
+        if (userEmail.length()==0){
+            Toast.makeText(getApplicationContext(),"Please input your email.",Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        final String userPassword = strPassword; //item_data.get(3).title;
+        if (userPassword.length()==0){
+            Toast.makeText(getApplicationContext(),"Please input your password.",Toast.LENGTH_LONG).show();
+            return;
+        }
+
+
+        AsyncTask<Void, Void, JSONObject> mSignUpTask = new AsyncTask<Void, Void, JSONObject>() {
+
+            @Override
+            protected void onPreExecute(){
+                ringDialog = ProgressDialog.show(EditProfileActivity.this, "Please wait...", "Signing up...", true);
+            }
+
+            @Override
+            protected JSONObject doInBackground(Void... params) {
+                UserFunctions userFunction = new UserFunctions();
+                JSONObject json = userFunction.updateUser(strUserToken,userName,userEmail,userPassword);
+                // check for login response
+                if(json!=null){
+                    return json;
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(JSONObject result) {
+                if(result!=null) {
+                    getResult(result);
+                }else{
+                    Toast.makeText(getApplicationContext(), "Can't update your user information..", Toast.LENGTH_LONG).show();
+                }
+                ringDialog.dismiss();
+            }
+        };
+        // execute AsyncTask
+        mSignUpTask.execute(null, null, null);
+    }
+
+    void getResult(JSONObject jResult){
+        JSONObject result = null;
+        String errorCode = "";
+        try {
+            result = jResult.getJSONObject("user");
+//            errorCode = result.getString("error");
+//            Toast.makeText(getApplicationContext(), errorCode, Toast.LENGTH_LONG).show();
+        } catch (JSONException e) {
+//            Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
+
+        if (result!= null){
+            Intent intent = new Intent(EditProfileActivity.this, MyProfileActivity.class);
+            startActivity(intent);
+            // close this activity
+            finish();
+        }else{
+            Toast.makeText(getApplicationContext(), "JSON ERROR.", Toast.LENGTH_LONG).show();
+        }
     }
 }

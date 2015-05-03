@@ -35,6 +35,8 @@ public class LoginActivity extends Activity{
     String strPassword;
     String strUserEmail;
     String strUserName;
+    String strUserToken;
+    String strUserID;
 
     TextView txtQestion;
     EditText eTxtAnswer;
@@ -182,6 +184,8 @@ public class LoginActivity extends Activity{
         if (result!= null){
             try {
                 strUserName = result.getString("name");
+                strUserToken = result.getString("auth_token");
+                strUserID = result.getString("uid");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -190,6 +194,9 @@ public class LoginActivity extends Activity{
             SharedPreferences.Editor editor = settings.edit();
             editor.putString("user_email",strUserEmail);
             editor.putString("user_name",strUserName);
+            editor.putString("user_token",strUserToken);
+            editor.putString("user_id",strUserID);
+            editor.putString("user_pass",strPassword);
             editor.commit();
 
             Intent intent = new Intent(LoginActivity.this, MyProfileActivity.class);
