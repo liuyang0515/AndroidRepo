@@ -47,6 +47,7 @@ public class EditProfileActivity  extends Activity {
         strUserName = settings.getString("user_name","default");
         strUserEmail = settings.getString("user_email","default@default.com");
         strUserToken = settings.getString("user_token","");
+        strPassword = settings.getString("user_pass","");
 
         item_data = new ArrayList<Item>();
         Item sItem = new Item("");

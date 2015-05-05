@@ -67,30 +67,35 @@
             android:gravity="center"
             android:id="@+id/layerScrl">
             <ImageView
+                android:id="@+id/imgAvatar1"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="30dp"
-                android:src="@drawable/avatar1"/>
+                android:src="@drawable/avatar1_def"/>
             <ImageView
+                android:id="@+id/imgAvatar2"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="30dp"
-                android:src="@drawable/avatar2"/>
+                android:src="@drawable/avatar2_def"/>
             <ImageView
+                android:id="@+id/imgAvatar3"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="30dp"
-                android:src="@drawable/avatar3"/>
+                android:src="@drawable/avatar3_def"/>
             <ImageView
+                android:id="@+id/imgAvatar4"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="30dp"
-                android:src="@drawable/avatar4"/>
+                android:src="@drawable/avatar4_def"/>
             <ImageView
+                android:id="@+id/imgAvatar5"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="30dp"
-                android:src="@drawable/avatar5"/>
+                android:src="@drawable/avatar5_def"/>
         </LinearLayout>
     </ScrollView>
 
@@ -99,5 +104,5 @@
         android:layout_height="75dp"
         android:background="@drawable/btn_setimage"
         android:layout_alignParentBottom="true"
-        android:id="@+id/btnLoginBt"/>
+        android:id="@+id/btnSetImage"/>
 </RelativeLayout>

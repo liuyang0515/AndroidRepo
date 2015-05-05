@@ -2,6 +2,7 @@ package com.zarretail.zoney;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.GestureDetector;
@@ -29,10 +30,19 @@ public class AvatarActivity extends Activity implements OnGestureListener, View.
     ViewFlipper vf;
     TextView tv;
 
+    int nSelected;
+
+    ImageView imgAvatar1;
+    ImageView imgAvatar2;
+    ImageView imgAvatar3;
+    ImageView imgAvatar4;
+    ImageView imgAvatar5;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avatar);
         getActionBar().hide();
+        getSavedData();
 
         tv = (TextView)findViewById(R.id.txtNavTitle);
         gd = new GestureDetector(this);
@@ -77,6 +87,73 @@ public class AvatarActivity extends Activity implements OnGestureListener, View.
             }
         });
 
+        imgAvatar1 = (ImageView)findViewById(R.id.imgAvatar1);
+        if(nSelected == 1){
+            imgAvatar1.setImageResource(R.drawable.avatar1_sel);
+        }else{
+            imgAvatar1.setImageResource(R.drawable.avatar1_def);
+        }
+        imgAvatar1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                setImages(1);
+            }
+        });
+
+        imgAvatar2 = (ImageView)findViewById(R.id.imgAvatar2);
+        if(nSelected == 2){
+            imgAvatar2.setImageResource(R.drawable.avatar2_sel);
+        }else{
+            imgAvatar2.setImageResource(R.drawable.avatar2_def);
+        }
+        imgAvatar2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                setImages(2);
+            }
+        });
+
+        imgAvatar3 = (ImageView)findViewById(R.id.imgAvatar3);
+        if(nSelected == 3){
+            imgAvatar3.setImageResource(R.drawable.avatar3_sel);
+        }else{
+            imgAvatar3.setImageResource(R.drawable.avatar3_def);
+        }
+        imgAvatar3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                setImages(3);
+            }
+        });
+
+        imgAvatar4 = (ImageView)findViewById(R.id.imgAvatar4);
+        if(nSelected == 4){
+            imgAvatar4.setImageResource(R.drawable.avatar4_sel);
+        }else{
+            imgAvatar4.setImageResource(R.drawable.avatar4_def);
+        }
+        imgAvatar4.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                setImages(4);
+            }
+        });
+
+        imgAvatar5 = (ImageView)findViewById(R.id.imgAvatar5);
+        if(nSelected == 5){
+            imgAvatar5.setImageResource(R.drawable.avatar5_sel);
+        }else{
+            imgAvatar5.setImageResource(R.drawable.avatar5_def);
+        }
+        imgAvatar5.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                setImages(5);
+            }
+        });
+
+        Button btnSaveImage = (Button)findViewById(R.id.btnSetImage);
+        btnSaveImage.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                SaveData();
+                finish();
+            }
+        });
     }
 
     @Override
@@ -147,5 +224,56 @@ public class AvatarActivity extends Activity implements OnGestureListener, View.
         onTouchEvent(event);
 
         return false;
+    }
+
+    void SaveData() {
+        SharedPreferences settings = getSharedPreferences("mySetting",0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt("avarta_index",nSelected);
+        editor.commit();
+    }
+
+    void setImages(int nIndex){
+        if(nIndex == 1){
+            imgAvatar1.setImageResource(R.drawable.avatar1_sel);
+            imgAvatar2.setImageResource(R.drawable.avatar2_def);
+            imgAvatar3.setImageResource(R.drawable.avatar3_def);
+            imgAvatar4.setImageResource(R.drawable.avatar4_def);
+            imgAvatar5.setImageResource(R.drawable.avatar5_def);
+            nSelected = 1;
+        }else if(nIndex ==2){
+            imgAvatar1.setImageResource(R.drawable.avatar1_def);
+            imgAvatar2.setImageResource(R.drawable.avatar2_sel);
+            imgAvatar3.setImageResource(R.drawable.avatar3_def);
+            imgAvatar4.setImageResource(R.drawable.avatar4_def);
+            imgAvatar5.setImageResource(R.drawable.avatar5_def);
+        }
+        else if(nIndex ==3){
+            imgAvatar1.setImageResource(R.drawable.avatar1_def);
+            imgAvatar2.setImageResource(R.drawable.avatar2_def);
+            imgAvatar3.setImageResource(R.drawable.avatar3_sel);
+            imgAvatar4.setImageResource(R.drawable.avatar4_def);
+            imgAvatar5.setImageResource(R.drawable.avatar5_def);
+        }
+        else if(nIndex ==4){
+            imgAvatar1.setImageResource(R.drawable.avatar1_def);
+            imgAvatar2.setImageResource(R.drawable.avatar2_def);
+            imgAvatar3.setImageResource(R.drawable.avatar3_def);
+            imgAvatar4.setImageResource(R.drawable.avatar4_sel);
+            imgAvatar5.setImageResource(R.drawable.avatar5_def);
+        }
+        else if(nIndex ==5){
+            imgAvatar1.setImageResource(R.drawable.avatar1_def);
+            imgAvatar2.setImageResource(R.drawable.avatar2_def);
+            imgAvatar3.setImageResource(R.drawable.avatar3_def);
+            imgAvatar4.setImageResource(R.drawable.avatar4_def);
+            imgAvatar5.setImageResource(R.drawable.avatar5_sel);
+        }
+        nSelected = nIndex;
+    }
+
+    void getSavedData(){
+        SharedPreferences settings = getSharedPreferences("mySetting",0);
+        nSelected = settings.getInt("avarta_index",1);
     }
 }
