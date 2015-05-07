@@ -2,25 +2,18 @@
 <items version="2" >
 
     <item
-        jar="D:\MyProject\Android\Project\FromKUJ\ZoneyRepo\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\5.0.89\classes.jar"
-        jumboMode="false"
-        revision="21.0.2"
-        sha1="d71573c9c5ea98a8db47ad6ff993a63d492b3bfa">
-        <dex dex="D:\MyProject\Android\Project\FromKUJ\ZoneyRepo\app\build\intermediates\pre-dexed\debug\classes-4c748fea641282e40dcbe05b9b03146e5da4cfe8.jar" />
-    </item>
-    <item
-        jar="D:\Source\Android Tools\AndroidStudio_SDK\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        jar="/Volumes/Data/DevTools/adt-bundle-mac-x86_64-20140702/sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
         jumboMode="false"
         revision="21.0.2"
         sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
-        <dex dex="D:\MyProject\Android\Project\FromKUJ\Zoney\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-abf6cf4c61aece962c2152fa39dd0e8278902cf1.jar" />
+        <dex dex="/Volumes/Work/On-goings/Darion_Miller(US)/AndroidRepo/app/build/intermediates/pre-dexed/debug/support-v4-19.1.0-ad69d1b81883bf7f2aa218597a8888692a89c9c7.jar" />
     </item>
     <item
-        jar="D:\MyProject\Android\Project\FromKUJ\Zoney\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\5.0.89\classes.jar"
+        jar="/Volumes/Work/On-goings/Darion_Miller(US)/AndroidRepo/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/5.0.89/classes.jar"
         jumboMode="false"
         revision="21.0.2"
         sha1="d71573c9c5ea98a8db47ad6ff993a63d492b3bfa">
-        <dex dex="D:\MyProject\Android\Project\FromKUJ\Zoney\app\build\intermediates\pre-dexed\debug\classes-5b95ab4075c6ffb389e6f95d978aeab93a658865.jar" />
+        <dex dex="/Volumes/Work/On-goings/Darion_Miller(US)/AndroidRepo/app/build/intermediates/pre-dexed/debug/classes-11c337dbb2e3514fe537a51343a51a3cb10e9041.jar" />
     </item>
 
 </items>

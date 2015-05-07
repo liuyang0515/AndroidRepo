@@ -30,7 +30,7 @@ public class SplashActivity extends Activity {
                 Intent i = new Intent(SplashActivity.this, MyActivity.class);
                 startActivity(i);
 
-                // close this activityss
+                // close this activity
                 finish();
             }
         }, SPLASH_TIME_OUT);
