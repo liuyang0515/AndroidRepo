@@ -2,6 +2,7 @@ package com.zarretail.zoney;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -151,6 +152,8 @@ public class AvatarActivity extends Activity implements OnGestureListener, View.
         btnSaveImage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 SaveData();
+                Intent intent = new Intent();
+                setResult(2,intent);
                 finish();
             }
         });
@@ -229,7 +232,7 @@ public class AvatarActivity extends Activity implements OnGestureListener, View.
     void SaveData() {
         SharedPreferences settings = getSharedPreferences("mySetting",0);
         SharedPreferences.Editor editor = settings.edit();
-        editor.putInt("avarta_index",nSelected);
+        editor.putInt("avarta_index", nSelected);
         editor.commit();
     }
 
@@ -274,6 +277,6 @@ public class AvatarActivity extends Activity implements OnGestureListener, View.
 
     void getSavedData(){
         SharedPreferences settings = getSharedPreferences("mySetting",0);
-        nSelected = settings.getInt("avarta_index",1);
+        nSelected = settings.getInt("avarta_index", 1);
     }
 }

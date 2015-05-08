@@ -18,14 +18,18 @@ import com.zarretail.zoney.fragment.ProfileMapFragment;
 public class MyProfileActivity extends Activity {
     Fragment fragmentMain, fragmentMap, fragmentChat;
 
+    Button btnProfileTab;
+    Button btnMapTab;
+    Button btnChatTab;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myprofile);
         getActionBar().hide();
 
-        final Button btnProfileTab = (Button)findViewById(R.id.btnProfile);
-        final Button btnMapTab = (Button)findViewById(R.id.btnMap);
-        final Button btnChatTab = (Button)findViewById(R.id.btnChat);
+        btnProfileTab = (Button)findViewById(R.id.btnProfile);
+        btnMapTab = (Button)findViewById(R.id.btnMap);
+        btnChatTab = (Button)findViewById(R.id.btnChat);
 
         fragmentMain = new ProfileMainFragment();
         fragmentMap = new ProfileMapFragment();
@@ -63,7 +67,10 @@ public class MyProfileActivity extends Activity {
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentChat).commit();
             }
         });
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
     }
 }
