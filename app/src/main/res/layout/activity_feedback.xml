@@ -24,7 +24,7 @@
     <Button
         android:layout_width="61dp"
         android:layout_height="14dp"
-        android:id="@+id/btnNext"
+        android:id="@+id/btnSend"
         android:layout_alignParentRight="true"
         android:layout_marginTop="28dp"
         android:layout_marginRight="20dp"
@@ -66,24 +66,37 @@
         android:gravity="left"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="22dp"/>
-    
-    <EditText
-        android:id="@+id/eTxtTo"
-        android:layout_width="fill_parent"
-        android:layout_height="40dp"
-        android:layout_below="@id/txtNavTitle"
-        android:layout_marginTop="22dp"
-        android:textColor="#ffffff"
-        android:layout_toRightOf="@id/txtTo"/>
 
-    <EditText
-        android:id="@+id/eTxtFrom"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtTo"
+    <TextView
+        android:id="@+id/eTxtTo"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/txtNavTitle"
+        android:text="test@test.com"
         android:textColor="#ffffff"
-        android:layout_marginTop="20dp"
-        android:layout_toRightOf="@id/txtFrom"/>
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="left"
+        android:layout_marginTop="32dp"
+        android:layout_toRightOf="@+id/txtFrom"
+        android:layout_alignRight="@+id/btnSend"
+        android:layout_alignEnd="@+id/btnSend" />
+
+    <TextView
+        android:id="@+id/eTxtFrom"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/txtTo"
+        android:text="abc@abc.com"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="left"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="22dp"
+        android:layout_toRightOf="@id/txtFrom"
+        android:layout_alignRight="@+id/eTxtTo"
+        android:layout_alignEnd="@+id/eTxtTo" />
 
     <ImageView
         android:id="@+id/imgDivide2"
@@ -95,12 +108,12 @@
         android:src="@drawable/divider"/>
 
     <EditText
-        android:id="@+id/eTxtFeedback" 
+        android:id="@+id/eTxtFeedback"
         android:layout_width="fill_parent"
         android:textColor="#ffffff"
         android:layout_height="wrap_content"
         android:layout_below="@id/imgDivide2"
         android:layout_alignLeft="@+id/txtFrom"
-        android:text="Let us know  your thoughts here..."
+        android:hint="Let us know  your thoughts here..."
         android:layout_alignStart="@+id/txtFrom" />
 </RelativeLayout>

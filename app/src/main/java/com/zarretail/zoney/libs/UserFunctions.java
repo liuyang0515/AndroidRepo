@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class UserFunctions {
-	
+
 	private JSONParser jsonParser;
 
 	private static String getImagesURL;
@@ -35,9 +35,10 @@ public class UserFunctions {
     private static String RegUserURL;
     private static String LoginUserURL;
     private static String UpdatePssURL;
+    private static String SendFeedbackURL;
 
-	
-	// constructor
+
+    // constructor
 	public UserFunctions(){
 		jsonParser = new JSONParser();
 //		getImagesURL = Config.SouthLantGetImagesURL;
@@ -51,7 +52,8 @@ public class UserFunctions {
 
         RegUserURL = "https://zoney-staging.herokuapp.com/api/sign_up";
         LoginUserURL = "https://zoney-staging.herokuapp.com/api/sign_in";
-        UpdatePssURL = "ttps://zoney-staging.herokuapp.com/api/profile";
+        UpdatePssURL = "https://zoney-staging.herokuapp.com/api/profile";
+        SendFeedbackURL = "https://zoney-staging.herokuapp.com/api/feedback";
 
 	}
 
@@ -155,7 +157,7 @@ public class UserFunctions {
             Log.e("JSON ERROR Occurred!!!!", "Exception: " + e);
         }
 
-        JSONObject json = jsonParser.getJSONFromUrlAndJSON(RegUserURL,jsonRequest);
+        JSONObject json = jsonParser.getJSONFromUrlAndJSON(RegUserURL, jsonRequest);
         return  json;
     }
 
@@ -226,8 +228,31 @@ public class UserFunctions {
         JSONObject json = jsonParser.getJSONFromUrlAndJSON(RegUserURL,jsonRequest);
         return  json;
     }
+
+    /**
+     * function send feedback Request
+     * */
+
+    public JSONObject sendFeedback(String strFeedback, String authToken) {
+        // Building Parameters
+        //NSDictionary * parameters = @{@"tag":@"login", @"email":email, @"password":password, @"token":token};
+        Log.e("SendFeedback", "message:" + strFeedback);
+
+        JSONObject jsonObj = new JSONObject();
+
+        try {
+            jsonObj.put("auth_token",authToken);
+            jsonObj.put("message", strFeedback);
+        } catch (Exception e) {
+            Log.e("JSON ERROR Occurred!!!!", "Exception: " + e);
+        }
+
+        JSONObject json = jsonParser.getJSONFromUrlAndJSON(SendFeedbackURL, jsonObj);
+        return  json;
+    }
+
  	/**
-	 * 
+	 *
 	 * Check connection to server
 	 * */
 	public boolean isConnectedToServer(String url, int timeout) {
@@ -258,5 +283,5 @@ public class UserFunctions {
         }
         return md5;
 	}
-	
+
 }
